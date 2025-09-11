@@ -1,0 +1,51 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Admin - Mentora</title><link rel='stylesheet' href='styles.css'></head><body><header class='header'><div style='display:flex;align-items:center;gap:12px'><a href='index.html'><img src='logo.png' class='logo' alt='logo'></a><h2>Admin Dashboard</h2></div></header><main class='container' style='padding-top:20px'>
+<h1>Admin Dashboard</h1>
+<p>Dummy analytics for demonstration.</p>
+
+<section class='section'>
+  <h2>Reported Issues by Category</h2>
+  <canvas id='chart1' width='900' height='320' style='background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);'></canvas>
+</section>
+<section class='section'>
+  <h2>Weekly Check-ins</h2>
+  <canvas id='chart2' width='900' height='260' style='background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);'></canvas>
+</section>
+
+<script>
+  function drawBarChart(ctx, labels, stacks){
+    var w = ctx.canvas.width, h = ctx.canvas.height, pad=50, bw = (w - pad*2) / labels.length - 20; 
+    ctx.clearRect(0,0,w,h); ctx.font='12px Arial'; ctx.fillStyle='#053321';
+    var totals = labels.map(function(_,i){ return stacks.reduce(function(a,s){return a+s.values[i];},0); });
+    var max = Math.max.apply(null, totals) * 1.2; 
+    // axes
+    ctx.strokeStyle='#cfe8db'; ctx.beginPath(); ctx.moveTo(pad,pad); ctx.lineTo(pad,h-pad); ctx.lineTo(w-pad,h-pad); ctx.stroke();
+    // bars
+    labels.forEach(function(lbl,i){
+      var x = pad + i*(bw+20) + 10; var y = h - pad; var y0=y; 
+      stacks.forEach(function(stack){ var val = stack.values[i]; var bh = (val/max)*(h-pad*2); ctx.fillStyle = stack.color; ctx.fillRect(x, y-bh, bw, bh); y -= bh; });
+      ctx.fillStyle='#053321'; ctx.fillText(lbl, x, h-pad+16);
+    });
+    // legend
+    var lx = w - pad - 160, ly = pad;
+    stacks.forEach(function(s){ ctx.fillStyle=s.color; ctx.fillRect(lx,ly,12,12); ctx.fillStyle='#053321'; ctx.fillText(s.name,lx+18,ly+11); ly+=18; });
+  }
+  function drawLine(ctx, points){
+    var w=ctx.canvas.width, h=ctx.canvas.height, pad=40; ctx.clearRect(0,0,w,h);
+    var xs = points.map(function(p,idx){ return pad + idx*( (w-pad*2)/(points.length-1) ); });
+    var max = Math.max.apply(null, points)*1.2; 
+    ctx.strokeStyle='#cfe8db'; ctx.beginPath(); ctx.moveTo(pad,pad); ctx.lineTo(pad,h-pad); ctx.lineTo(w-pad,h-pad); ctx.stroke();
+    ctx.strokeStyle='#4da97a'; ctx.lineWidth=2; ctx.beginPath(); xs.forEach(function(x,i){ var y = h-pad - (points[i]/max)*(h-pad*2); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }); ctx.stroke();
+    ctx.fillStyle='#4da97a'; xs.forEach(function(x,i){ var y=h-pad-(points[i]/max)*(h-pad*2); ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill(); });
+  }
+  // Dummy data
+  var labels=['Anxiety','Stress','Depression','Sleep','Relationships'];
+  var stacks=[
+    {name:'Female', color:'#8fd3b3', values:[120,150,110,90,80]},
+    {name:'Male', color:'#4da97a', values:[100,120,95,70,65]},
+    {name:'Other', color:'#2f8b5a', values:[20,30,25,18,16]}
+  ];
+  drawBarChart(document.getElementById('chart1').getContext('2d'), labels, stacks);
+  drawLine(document.getElementById('chart2').getContext('2d'), [40,55,62,58,73,69,80]);
+</script>
+
+</main></body></html>

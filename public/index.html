@@ -1,0 +1,118 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Mentora PRO</title><link rel='stylesheet' href='styles.css'></head><body>
+<header class='header'>
+  <div class='left-area'>
+    <img src='logo.png' class='logo' alt='logo'>
+    <div class='search-wrap'>
+      <input id='searchInput' class='search' placeholder='Search features... e.g., Meditation, Videos, Helplines'>
+      <div id='suggestions' class='suggestions'></div>
+    </div>
+  </div>
+  <div style='display:flex;align-items:center;gap:12px;position:relative'>
+    <div id='quickPanel' style='display:flex;align-items:center;gap:8px'>
+      <a href='contact.html' class='btn btn-accent' style='padding:8px 12px;border-radius:14px'>Contact</a>
+      <a href='admin.html' class='btn' style='padding:8px 12px;border-radius:14px'>Admin Dashboard</a>
+      <button class='btn' style='padding:8px 12px;border-radius:14px' onclick="alert('Booking flow coming soon')">Book Appointment</button>
+    </div>
+    <a href='about.html' class='btn btn-accent' style='padding:8px 12px;border-radius:14px'>About Us</a>
+    <button id='langBtn' class='btn btn-green'>EN</button>
+    <button id='themeBtn' class='btn'>🌙</button>
+    <div class='profile' id='profileBtn' title='Profile'>
+      <div class='avatar'>👤</div>
+    </div>
+    <div id='profileMenu' class='profile-menu'>
+      <div style='padding:6px 12px'>Signed in as <strong>Guest</strong></div>
+      <hr style='margin:6px 0'>
+      <button class='btn' style='width:100%'>Profile</button>
+      <button class='btn' style='width:100%;margin-top:8px'>Settings</button>
+    </div>
+  </div>
+</header>
+<main class='container'>
+  <section class='hero'>
+    <div class='hero-left fade-in'>
+      <h1 class='h1'>Mentora - A Digitalized Mental Health Solution</h1>
+      <p class='subtitle'>A stigma-free space for students - counselling, mentorship, and peer support.</p>
+      <button id='exploreBtn' class='btn btn-green'>Explore Resources</button>
+      <div class='marquee' style='margin-top:16px'><div id='quoteTrack' class='quote-track'>🌱 You are not alone • 💡 Small steps matter • 💪 Keep going - breathe.</div></div>
+    </div>
+    
+  </section>
+  <section class='section fade-in' id='stats'>
+    <h2>Key Statistics</h2>
+    <div class='cards'>
+      <div class='card stat'><h3>1 in 7</h3><p>Adolescents worldwide experience a mental disorder</p><div class='stat-source'>Source: WHO</div></div>
+      <div class='card stat'><h3>~20%</h3><p>Indian students report symptoms of anxiety/depression</p><div class='stat-source'>Source: NIMHANS</div></div>
+      <div class='card stat'><h3>50%+</h3><p>Would use anonymous support if available</p><div class='stat-source'>Source: Mentora Survey</div></div>
+      <div class='card stat'><h3>35%</h3><p>Significant Increase in reported stress among college students post-pandemic</p><div class='stat-source'>Source: UNESCO</div></div>
+      <div class='card stat'><h3>40%</h3><p>Students reporting sleep disturbances during exams</p><div class='stat-source'>Source: Student Wellbeing Polls</div></div>
+      <div class='card stat'><h3>60%</h3><p>Prefer digital/anonymous first contact for support</p><div class='stat-source'>Source: National Youth Survey</div></div>
+      <div class='card stat'><h3>3x</h3><p>Higher help‑seeking when peers normalize talking about feelings</p><div class='stat-source'>Source: JAMA Pediatrics</div></div>
+      <div class='card stat'><h3>70%</h3><p>Report improved mood after 10‑min guided breathing</p><div class='stat-source'>Source: Meta‑analysis of brief mindfulness trials</div></div>
+    </div>
+  </section>
+  <section class='section fade-in' id='explore'>
+    <h2>Psychoeducational Resource Hub</h2>
+    <div class='cards'>
+      <div class='card'><h3>Meditate Now</h3><p>Guided breathing and mindfulness.</p></div>
+      <div class='card'><h3>Relaxing BGM</h3><p>Background music for calm.</p></div>
+      <div class='card'><h3>Calming Videos</h3><p>Curated video resources.</p></div>
+      <div class='card'><h3>Relaxing Images</h3><p>Visuals and wallpapers to lift mood.</p></div>
+    </div>
+  </section>
+  <section class='section fade-in' id='features'>
+    <h2>Key Features</h2>
+    <div class='cards'>
+      <div class='card' style='min-height:120px'><h3>🧭 Guided Self‑Help</h3><p>Step‑by‑step tools for anxiety, stress, sleep and focus.</p></div>
+      <div class='card' style='min-height:120px'><h3>🤝 Helplines & Support</h3><p>Trusted numbers, copy‑to‑call, and quick signposting.</p></div>
+      <div class='card' style='min-height:120px'><h3>🎧 Calm Media</h3><p>Curated audio/videos/images to relax your mind.</p></div>
+      <div class='card' style='min-height:120px'><h3>💬 Smart Chat</h3><p>Gentle prompts and tips when you need a nudge.</p></div>
+    </div>
+  </section>
+  <section class='section fade-in' id='media'>
+    <h2>Media Resources</h2>
+    <div class='media-grid' id='mediaGrid'></div>
+  </section>
+  <section class='section fade-in' id='gallery'>
+    <h2>Relaxing Images</h2>
+    <div class='gallery' id='galleryWrap'></div>
+  </section>
+  <section class='section fade-in' id='faq'>
+    <h2 id='faqTitle'>FAQ</h2>
+    <div class='cards' id='faqWrap'></div>
+  </section>
+  <section class='section fade-in' id='contact'>
+    <h2 id='contactTitle'>Contact Us</h2>
+    <p>Email: <a href='mailto:mentora24x7@gmail.com'>mentora24x7@gmail.com</a></p>
+    <div class='cards'>
+      <button class='btn btn-accent' onclick="alert('Coming soon')">Instagram</button>
+      <button class='btn btn-accent' onclick="alert('Coming soon')">YouTube</button>
+      <button class='btn btn-accent' onclick="alert('Coming soon')">LinkedIn</button>
+      <button class='btn btn-accent' onclick="alert('Coming soon')">Twitter/X</button>
+    </div>
+  </section>
+  <section class='section fade-in' id='helplines'>
+    <h2>Helplines</h2>
+    <div class='helpline' id='helplineBox'></div>
+  </section>
+  <section class='section fade-in' id='more'>
+    <h2>Articles and Guides</h2>
+    <div class='cards' id='articlesWrap'></div>
+  </section>
+  <footer class='footer'>
+    <div>Mentora - Because Every Mind Matters · © 2025</div>
+    <div style='margin-top:10px;display:flex;gap:12px;flex-wrap:wrap'>
+      <a href='privacy.html'>Privacy Policy</a>
+      <a href='cookies.html'>Cookies Policy</a>
+      <a href='terms.html'>Terms of Service</a>
+      <button class='btn btn-green' id='subscribeBtn' onclick="alert('Subscribed!')">Stay Updated</button>
+    </div>
+  </footer>
+</main>
+<div id='chatButton' class='chat-button'>💬</div>
+<div id='chatWindow' class='chat-window' style='display:none'>
+  <div class='chat-header'><div>Mentora Chat</div><div><button id='closeChat' style='background:none;border:none;color:white;font-size:18px;cursor:pointer'>✖</button></div></div>
+  <div id='chatBody' class='chat-body'></div>
+  <div class='chat-input'><input id='chatInput' placeholder='Type: I feel stressed, motivate me, helpline...' /><button id='sendBtn' class='btn btn-green'>Send</button></div>
+</div>
+<script src='app.js'></script>
+</body></html>
